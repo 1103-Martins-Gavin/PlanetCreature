@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b70enwaqma5lb"]
+
+[ext_resource type="Script" uid="uid://mtduq3v8wo7r" path="res://UI/hud.gd" id="1_37p78"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1064763157]
+script = ExtResource("1_37p78")
+
+[node name="Label" type="Label" parent="." unique_id=1466811314]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Copper: 0"

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dpjkkwr3flt5h"]
+
+[ext_resource type="PackedScene" uid="uid://dyl6a0hr2gc0g" path="res://Entities/Creatures/base_creature.tscn" id="1_m0vnh"]
+
+[node name="BaseCreature" unique_id=1983336409 instance=ExtResource("1_m0vnh")]
+behavior = 0
+max_health = 4
+move_speed = 300.0
+attack_damage = 0

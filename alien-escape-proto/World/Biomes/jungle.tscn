@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cwx6qsfgn786v"]
+
+[ext_resource type="Script" uid="uid://b0g6s4ymst8nq" path="res://World/Biomes/jungle.gd" id="1_6ppyq"]
+[ext_resource type="PackedScene" uid="uid://yoyi8c6xh1ko" path="res://Entities/Player/player.tscn" id="2_vmfeg"]
+[ext_resource type="PackedScene" uid="uid://docoh43fgjqjx" path="res://World/Mechanics/transition_platform.tscn" id="3_onr31"]
+[ext_resource type="PackedScene" uid="uid://xeiwcdbdw1ch" path="res://Entities/Creatures/Hostile/sporling.tscn" id="4_vmfeg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abo28"]
+size = Vector2(2013, 995)
+
+[node name="Jungle" type="Node2D" unique_id=758685894]
+script = ExtResource("1_6ppyq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1518947318]
+offset_left = -50.0
+offset_top = 582.0
+offset_right = 1950.0
+offset_bottom = 1582.0
+color = Color(0, 0.22, 0.055, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect" unique_id=700265018]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/StaticBody2D" unique_id=1968612639]
+position = Vector2(1007, 493)
+shape = SubResource("RectangleShape2D_abo28")
+
+[node name="Player" parent="." unique_id=1006036994 instance=ExtResource("2_vmfeg")]
+position = Vector2(680, 493)
+
+[node name="TransitionPlatform" parent="." unique_id=891411151 instance=ExtResource("3_onr31")]
+position = Vector2(-3, 565)
+
+[node name="SpawnPoint" parent="TransitionPlatform" index="1" unique_id=1025001198]
+position = Vector2(11, -7)
+
+[node name="ZoneDoor" parent="TransitionPlatform" index="2" unique_id=890734639]
+position = Vector2(-17, -159)
+next_scene_path = "uid://btbewunyvpw5y"
+spawn_tag = "PlainsReturn"
+
+[node name="JungleEntrance" type="Marker2D" parent="." unique_id=550328081]
+position = Vector2(65, 516)
+
+[node name="BaseCreature" parent="." unique_id=1983336409 instance=ExtResource("4_vmfeg")]
+position = Vector2(825, 527)
+
+[node name="BaseCreature2" parent="." unique_id=1419677067 instance=ExtResource("4_vmfeg")]
+position = Vector2(725, 527)
+
+[editable path="TransitionPlatform"]

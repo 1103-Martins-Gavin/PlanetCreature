@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://yoyi8c6xh1ko"]
+
+[ext_resource type="Script" uid="uid://cbjwsdxl6tun1" path="res://Entities/Player/player.gd" id="1_4flbx"]
+[ext_resource type="Resource" uid="uid://3qkpnqkjoe8n" path="res://Items/Tools/basic_pickaxe.tres" id="2_lu8i8"]
+[ext_resource type="PackedScene" uid="uid://b70enwaqma5lb" path="res://UI/hud.tscn" id="2_onrkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(30, 31)
+
+[node name="Player" type="CharacterBody2D" unique_id=1006036994]
+script = ExtResource("1_4flbx")
+equipped_tool = ExtResource("2_lu8i8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1954989766]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.24313726, 0.49803922, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=972248929]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1369934109]
+offset = Vector2(0, -60)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_right = 1000
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1840626378]
+visible = false
+position = Vector2(16, 0)
+
+[node name="ToolVisual" type="ColorRect" parent="Pivot" unique_id=987578191]
+offset_right = 18.0
+offset_bottom = 18.0
+color = Color(0.46, 0.46, 0.46, 1)
+
+[node name="HUD" parent="." unique_id=1064763157 instance=ExtResource("2_onrkg")]
+
+[node name="HealthLabel" type="Label" parent="HUD" unique_id=1685041869]
+offset_left = 1054.0
+offset_top = 1.0
+offset_right = 1105.0
+offset_bottom = 24.0
+text = "HP 5/5"

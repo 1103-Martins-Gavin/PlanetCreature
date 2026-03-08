@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://docoh43fgjqjx"]
+
+[ext_resource type="PackedScene" uid="uid://68nxvi3kqcv2" path="res://World/Mechanics/zone_door.tscn" id="1_yhkhp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nx7eh"]
+size = Vector2(201, 21)
+
+[node name="TransitionPlatform" type="Node2D" unique_id=891411151]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=647483149]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=184935228]
+offset_right = 200.0
+offset_bottom = 21.0
+color = Color(0.36, 0.36, 0.36, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1783445277]
+position = Vector2(100.5, 10.5)
+shape = SubResource("RectangleShape2D_nx7eh")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1025001198]
+position = Vector2(99, -12)
+
+[node name="ZoneDoor" parent="." unique_id=890734639 instance=ExtResource("1_yhkhp")]
+position = Vector2(179, -155)

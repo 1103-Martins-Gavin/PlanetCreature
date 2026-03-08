@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://btbewunyvpw5y"]
+
+[ext_resource type="Script" uid="uid://cbv7krlwk0r84" path="res://World/Biomes/plains.gd" id="1_x6nce"]
+[ext_resource type="PackedScene" uid="uid://yoyi8c6xh1ko" path="res://Entities/Player/player.tscn" id="2_1uay7"]
+[ext_resource type="PackedScene" uid="uid://crywfeyvvaxfd" path="res://World/Interactables/boulder.tscn" id="3_h7fgy"]
+[ext_resource type="PackedScene" uid="uid://bpdft5gd2vl0j" path="res://Items/Materials/copper_node.tscn" id="4_a4imr"]
+[ext_resource type="PackedScene" uid="uid://docoh43fgjqjx" path="res://World/Mechanics/transition_platform.tscn" id="5_s1wbq"]
+[ext_resource type="PackedScene" uid="uid://ikhbm541iilh" path="res://World/Mechanics/spawn_zone.tscn" id="6_1uay7"]
+[ext_resource type="PackedScene" uid="uid://dpjkkwr3flt5h" path="res://Entities/Creatures/Friendly/hare.tscn" id="7_h7fgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oq2g6"]
+size = Vector2(2256, 45)
+
+[node name="Plains" type="Node2D" unique_id=2141775714]
+script = ExtResource("1_x6nce")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=957286737]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=341202502]
+offset_left = -6.0
+offset_top = 344.0
+offset_right = 2259.0
+offset_bottom = 394.0
+color = Color(9.62615e-07, 0.6079862, 0.23898008, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=833535147]
+position = Vector2(1125, 370)
+shape = SubResource("RectangleShape2D_oq2g6")
+
+[node name="Player" parent="." unique_id=1006036994 instance=ExtResource("2_1uay7")]
+position = Vector2(336, 234)
+
+[node name="Boulder" parent="." unique_id=37218551 instance=ExtResource("3_h7fgy")]
+position = Vector2(4, 306)
+drop_scene = ExtResource("4_a4imr")
+
+[node name="Boulder2" parent="." unique_id=1905948619 instance=ExtResource("3_h7fgy")]
+position = Vector2(120, 334)
+drop_scene = ExtResource("4_a4imr")
+
+[node name="Boulder3" parent="." unique_id=1027376872 instance=ExtResource("3_h7fgy")]
+position = Vector2(30, 325)
+drop_scene = ExtResource("4_a4imr")
+
+[node name="Boulder6" parent="." unique_id=1317750969 instance=ExtResource("3_h7fgy")]
+position = Vector2(53, 318)
+drop_scene = ExtResource("4_a4imr")
+
+[node name="Boulder4" parent="." unique_id=1242992954 instance=ExtResource("3_h7fgy")]
+position = Vector2(86, 301)
+drop_scene = ExtResource("4_a4imr")
+
+[node name="Boulder5" parent="." unique_id=1039937928 instance=ExtResource("3_h7fgy")]
+position = Vector2(85, 332)
+drop_scene = ExtResource("4_a4imr")
+
+[node name="TransitionPlatform" parent="." unique_id=891411151 instance=ExtResource("5_s1wbq")]
+position = Vector2(879, 338)
+
+[node name="ColorRect" parent="TransitionPlatform/StaticBody2D" parent_id_path=PackedInt32Array(891411151, 647483149) index="0" unique_id=184935228]
+metadata/_edit_use_anchors_ = true
+
+[node name="SpawnPoint" parent="TransitionPlatform" index="1" unique_id=1025001198]
+position = Vector2(142, -1)
+
+[node name="ZoneDoor" parent="TransitionPlatform" index="2" unique_id=890734639]
+next_scene_path = "uid://cwx6qsfgn786v"
+spawn_tag = "JungleEntrance"
+
+[node name="CrashSite" type="Marker2D" parent="." unique_id=182258975]
+position = Vector2(421, 315)
+
+[node name="PlainsReturn" type="Marker2D" parent="." unique_id=1419036982]
+position = Vector2(1013, 304)
+
+[node name="SpawnZone" parent="." unique_id=1353715856 instance=ExtResource("6_1uay7")]
+position = Vector2(570, 305)
+creature_scene = ExtResource("7_h7fgy")
+
+[node name="CollisionShape2D" parent="SpawnZone" index="0" unique_id=613533622]
+position = Vector2(67, 23)
+
+[editable path="TransitionPlatform"]
+[editable path="SpawnZone"]

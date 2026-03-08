@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://68nxvi3kqcv2"]
+
+[ext_resource type="Script" uid="uid://du67a2atmd6yo" path="res://World/Mechanics/zone_door.gd" id="1_n04wk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cgj"]
+size = Vector2(24, 184)
+
+[node name="ZoneDoor" type="Area2D" unique_id=890734639]
+script = ExtResource("1_n04wk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1520480150]
+position = Vector2(11, 91)
+shape = SubResource("RectangleShape2D_y7cgj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

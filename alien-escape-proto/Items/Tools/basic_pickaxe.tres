@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ToolData" format=3 uid="uid://3qkpnqkjoe8n"]
+
+[ext_resource type="Script" uid="uid://cje6ny6cdp01o" path="res://Items/Tools/tool_data.gd" id="1_ovlst"]
+
+[resource]
+script = ExtResource("1_ovlst")
+tool_name = "Basic Pickaxe"
+metadata/_custom_type_script = "uid://cje6ny6cdp01o"

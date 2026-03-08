@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dyl6a0hr2gc0g"]
+
+[ext_resource type="Script" uid="uid://22bduromf2ae" path="res://Entities/Creatures/base_creature.gd" id="1_080ty"]
+[ext_resource type="Texture2D" uid="uid://8x06lpo15nve" path="res://icon.svg" id="2_sdxvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqx2d"]
+size = Vector2(38, 37)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxs7o"]
+radius = 343.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lubp8"]
+size = Vector2(68, 57)
+
+[node name="BaseCreature" type="CharacterBody2D" unique_id=1983336409]
+script = ExtResource("1_080ty")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1792021062]
+position = Vector2(16.999998, 16.000002)
+scale = Vector2(0.29687497, 0.2890625)
+texture = ExtResource("2_sdxvq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2026684448]
+position = Vector2(18, 16.5)
+scale = Vector2(1, 0.9999999)
+shape = SubResource("RectangleShape2D_lqx2d")
+
+[node name="DetectionZone" type="Area2D" parent="." unique_id=319976623]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone" unique_id=1929599844]
+position = Vector2(17, 16)
+shape = SubResource("CircleShape2D_sxs7o")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=1584886756]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=688076070]
+position = Vector2(18, 17)
+shape = SubResource("RectangleShape2D_lubp8")
+
+[connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
