@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b5obeldvjct8k"]
+
+[ext_resource type="PackedScene" uid="uid://bpdft5gd2vl0j" path="res://Items/Materials/base_dropped_item.tscn" id="1_80usn"]
+[ext_resource type="Resource" uid="uid://dqdi7l7snfgl7" path="res://Items/Materials/copper_data.tres" id="2_g8h8f"]
+[ext_resource type="Texture2D" uid="uid://cch0xe41o1vbd" path="res://Beta Sprites/Items/CopperDrop.png" id="3_ugppl"]
+
+[node name="CopperDrop" unique_id=1412231584 instance=ExtResource("1_80usn")]
+item_data = ExtResource("2_g8h8f")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1399403495]
+position = Vector2(7, 11.335442)
+scale = Vector2(0.04702194, 0.04702194)
+texture = ExtResource("3_ugppl")

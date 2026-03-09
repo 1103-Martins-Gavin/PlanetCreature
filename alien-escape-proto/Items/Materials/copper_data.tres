@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dqdi7l7snfgl7"]
+
+[ext_resource type="Script" uid="uid://b6h8xjngknyim" path="res://Items/Materials/item_data.gd" id="1_hh65f"]
+[ext_resource type="Texture2D" uid="uid://cch0xe41o1vbd" path="res://Beta Sprites/Items/CopperDrop.png" id="1_rmhot"]
+
+[resource]
+script = ExtResource("1_hh65f")
+item_name = "Copper"
+item_icon = ExtResource("1_rmhot")
+metadata/_custom_type_script = "uid://b6h8xjngknyim"

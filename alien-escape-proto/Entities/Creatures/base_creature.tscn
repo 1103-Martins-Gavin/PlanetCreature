@@ -13,7 +13,11 @@ radius = 343.0
 size = Vector2(68, 57)
 
 [node name="BaseCreature" type="CharacterBody2D" unique_id=1983336409]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_080ty")
+max_health = 200
+attack_damage = 40
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1792021062]
 position = Vector2(16.999998, 16.000002)
@@ -26,12 +30,16 @@ scale = Vector2(1, 0.9999999)
 shape = SubResource("RectangleShape2D_lqx2d")
 
 [node name="DetectionZone" type="Area2D" parent="." unique_id=319976623]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone" unique_id=1929599844]
 position = Vector2(17, 16)
 shape = SubResource("CircleShape2D_sxs7o")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1584886756]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=688076070]
 position = Vector2(18, 17)
@@ -39,3 +47,5 @@ shape = SubResource("RectangleShape2D_lubp8")
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="." method="_on_attack_zone_body_exited"]

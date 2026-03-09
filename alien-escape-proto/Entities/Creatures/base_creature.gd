@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name BaseCreature
 
 # --- 1. BEHAVIOR TYPES ---
-# This creates a dropdown in the Inspector!
 enum Disposition {PASSIVE, NEUTRAL, HOSTILE}
 @export var behavior: Disposition = Disposition.HOSTILE
 
@@ -12,11 +11,15 @@ enum Disposition {PASSIVE, NEUTRAL, HOSTILE}
 
 # --- 3. COMBAT ---
 @export var attack_damage: int = 1
-# If true, it shoots projectiles. If false, it uses melee bites!
 @export var is_ranged: bool = false 
 
+# THE MISSING VARIABLES: Windup and cooldown timers!
+@export var attack_windup: float = 0.5
+@export var attack_cooldown: float = 1.5
+var can_attack: bool = true
+var player_in_attack_range: bool = false
+
 # --- 4. LOOT TABLE ---
-# An array that can hold multiple Custom Resources or Scenes to drop when it dies!
 @export var drop_table: Array[PackedScene]
 
 # --- THE INTERNAL BRAIN ---
@@ -36,30 +39,39 @@ func _physics_process(delta):
 	# The State Machine: What should I be doing right now?
 	match current_state:
 		State.IDLE:
-			# Friction: slow down to a stop
 			velocity.x = move_toward(velocity.x, 0, move_speed)
-			
 		State.WANDER:
-			pass # We will add random timer logic for this later!
-			
+			pass 
 		State.CHASE:
 			if target_player != null:
-				# Math trick: sign() returns 1 if positive (right), -1 if negative (left)
 				var direction = sign(target_player.global_position.x - global_position.x)
 				velocity.x = direction * move_speed
 				
-				# Flip the sprite to face the player!
 				if direction != 0:
 					$Sprite2D.scale.x = direction
-					
 		State.FLEE:
 			if target_player != null:
-				# Reverse the math: Run AWAY from the player
 				var direction = sign(global_position.x - target_player.global_position.x)
 				velocity.x = direction * move_speed
 				
 				if direction != 0:
 					$Sprite2D.scale.x = direction
+					
+		# THE MISSING LOGIC: How to actually bite the player!
+		State.ATTACK:
+			velocity.x = move_toward(velocity.x, 0, move_speed)
+			if can_attack and player_in_attack_range and target_player != null:
+				can_attack = false
+				print("Creature winding up attack...")
+				
+				await get_tree().create_timer(attack_windup).timeout
+				
+				if player_in_attack_range and target_player != null:
+					print("Creature strikes!")
+					target_player.take_damage(attack_damage)
+					
+				await get_tree().create_timer(attack_cooldown).timeout
+				can_attack = true
 
 	move_and_slide()
 
@@ -67,12 +79,14 @@ func _physics_process(delta):
 func take_damage(amount: int):
 	current_health -= amount
 	
-	# If I am Neutral and I get hit, I become Hostile!
+	# Add a little squish effect so you feel the impact!
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2(1.2, 0.8), 0.05)
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.1)
+	
 	if behavior == Disposition.NEUTRAL:
 		behavior = Disposition.HOSTILE
 		current_state = State.CHASE
-		
-	# If I am Passive and I get hit, I run away!
 	elif behavior == Disposition.PASSIVE:
 		current_state = State.FLEE
 		
@@ -80,28 +94,33 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	# Loop through the drop table and spawn all the loot!
 	for item in drop_table:
 		var loot = item.instantiate()
 		loot.global_position = global_position
 		get_parent().add_child(loot)
 	queue_free()
 
-
+# --- SENSORS ---
 func _on_detection_zone_body_entered(body):
 	if body.name == "Player":
 		target_player = body
-		
-		# Hostile mobs instantly attack!
 		if behavior == Disposition.HOSTILE:
 			current_state = State.CHASE
-			
-		# Notice we completely deleted the PASSIVE flee check here!
-		# Because we deleted it, they will just sit in State.IDLE until 
-		# your take_damage() function forcefully switches them to State.FLEE.
 
 func _on_detection_zone_body_exited(body):
 	if body.name == "Player":
 		target_player = null
-		# When the player is gone, go back to chilling
 		current_state = State.IDLE
+
+# THE MISSING SENSORS: Telling the brain when to bite!
+func _on_attack_zone_body_entered(body):
+	if body.name == "Player":
+		player_in_attack_range = true
+		if behavior == Disposition.HOSTILE:
+			current_state = State.ATTACK
+
+func _on_attack_zone_body_exited(body):
+	if body.name == "Player":
+		player_in_attack_range = false
+		if behavior == Disposition.HOSTILE:
+			current_state = State.CHASE

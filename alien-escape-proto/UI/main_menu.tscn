@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cj3er6nb6ni7x"]
+
+[ext_resource type="Script" uid="uid://cxgaoel7akp1x" path="res://UI/main_menu.gd" id="1_p8ccj"]
+
+[node name="MainMenu" type="Control" unique_id=380767831]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8ccj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2013727634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14109334, 0.37, 0.1332, 1)
+
+[node name="Button" type="Button" parent="." unique_id=1752282365]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 369.0
+offset_right = 697.0
+offset_bottom = 433.0
+text = "Start Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

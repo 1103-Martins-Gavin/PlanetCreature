@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cbv7krlwk0r84" path="res://World/Biomes/plains.gd" id="1_x6nce"]
 [ext_resource type="PackedScene" uid="uid://yoyi8c6xh1ko" path="res://Entities/Player/player.tscn" id="2_1uay7"]
-[ext_resource type="PackedScene" uid="uid://crywfeyvvaxfd" path="res://World/Interactables/boulder.tscn" id="3_h7fgy"]
-[ext_resource type="PackedScene" uid="uid://bpdft5gd2vl0j" path="res://Items/Materials/copper_node.tscn" id="4_a4imr"]
 [ext_resource type="PackedScene" uid="uid://docoh43fgjqjx" path="res://World/Mechanics/transition_platform.tscn" id="5_s1wbq"]
 [ext_resource type="PackedScene" uid="uid://ikhbm541iilh" path="res://World/Mechanics/spawn_zone.tscn" id="6_1uay7"]
+[ext_resource type="PackedScene" uid="uid://d0uvwpihqcx53" path="res://World/Interactables/copper_boulder.tscn" id="6_h7fgy"]
 [ext_resource type="PackedScene" uid="uid://dpjkkwr3flt5h" path="res://Entities/Creatures/Friendly/hare.tscn" id="7_h7fgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq2g6"]
@@ -29,30 +28,6 @@ shape = SubResource("RectangleShape2D_oq2g6")
 
 [node name="Player" parent="." unique_id=1006036994 instance=ExtResource("2_1uay7")]
 position = Vector2(336, 234)
-
-[node name="Boulder" parent="." unique_id=37218551 instance=ExtResource("3_h7fgy")]
-position = Vector2(4, 306)
-drop_scene = ExtResource("4_a4imr")
-
-[node name="Boulder2" parent="." unique_id=1905948619 instance=ExtResource("3_h7fgy")]
-position = Vector2(120, 334)
-drop_scene = ExtResource("4_a4imr")
-
-[node name="Boulder3" parent="." unique_id=1027376872 instance=ExtResource("3_h7fgy")]
-position = Vector2(30, 325)
-drop_scene = ExtResource("4_a4imr")
-
-[node name="Boulder6" parent="." unique_id=1317750969 instance=ExtResource("3_h7fgy")]
-position = Vector2(53, 318)
-drop_scene = ExtResource("4_a4imr")
-
-[node name="Boulder4" parent="." unique_id=1242992954 instance=ExtResource("3_h7fgy")]
-position = Vector2(86, 301)
-drop_scene = ExtResource("4_a4imr")
-
-[node name="Boulder5" parent="." unique_id=1039937928 instance=ExtResource("3_h7fgy")]
-position = Vector2(85, 332)
-drop_scene = ExtResource("4_a4imr")
 
 [node name="TransitionPlatform" parent="." unique_id=891411151 instance=ExtResource("5_s1wbq")]
 position = Vector2(879, 338)
@@ -80,5 +55,21 @@ creature_scene = ExtResource("7_h7fgy")
 [node name="CollisionShape2D" parent="SpawnZone" index="0" unique_id=613533622]
 position = Vector2(67, 23)
 
+[node name="CopperBoulder" parent="." unique_id=538276070 instance=ExtResource("6_h7fgy")]
+position = Vector2(20, 344)
+
+[node name="CollisionShape2D" parent="CopperBoulder" index="1" unique_id=784008576]
+position = Vector2(9.5, -11.5)
+
+[node name="CopperBoulder2" parent="." unique_id=1806576064 instance=ExtResource("6_h7fgy")]
+position = Vector2(48, 348)
+
+[node name="CopperBoulder3" parent="." unique_id=294896468 instance=ExtResource("6_h7fgy")]
+position = Vector2(81, 354)
+
+[node name="CopperBoulder4" parent="." unique_id=779609243 instance=ExtResource("6_h7fgy")]
+position = Vector2(123, 348)
+
 [editable path="TransitionPlatform"]
 [editable path="SpawnZone"]
+[editable path="CopperBoulder"]

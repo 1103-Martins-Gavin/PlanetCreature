@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://hdwtmbtca5fd"]
+
+[ext_resource type="Script" uid="uid://d0icsj2vd3ha3" path="res://Items/Weapons/base_weapon.gd" id="1_0xc8u"]
+[ext_resource type="Texture2D" uid="uid://bbamu0j3n27y1" path="res://Beta Sprites/Items/Sword.png" id="1_5vdo0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xc8u"]
+size = Vector2(20, 21)
+
+[node name="BaseWeapon" type="Node2D" unique_id=452284764]
+script = ExtResource("1_0xc8u")
+damage = 40
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=703875600]
+position = Vector2(10.874993, -11.745682)
+scale = Vector2(0.031739827, 0.03173984)
+texture = ExtResource("1_5vdo0")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=577712442]
+position = Vector2(-1, 1)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1084852872]
+position = Vector2(12, -12.5)
+shape = SubResource("RectangleShape2D_0xc8u")
+disabled = true

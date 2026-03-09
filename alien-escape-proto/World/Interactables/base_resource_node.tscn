@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cbq2wm7jtbw7e"]
+
+[ext_resource type="Script" uid="uid://cjxy0fk7l8xh0" path="res://World/Interactables/base_resource_node.gd" id="1_pk3s0"]
+
+[node name="BaseResourceNode" type="StaticBody2D" unique_id=538276070]
+collision_layer = 8
+script = ExtResource("1_pk3s0")
+max_health = 120
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=229680640]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=784008576]

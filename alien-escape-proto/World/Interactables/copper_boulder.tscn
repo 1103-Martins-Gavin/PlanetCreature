@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d0uvwpihqcx53"]
+
+[ext_resource type="PackedScene" uid="uid://cbq2wm7jtbw7e" path="res://World/Interactables/base_resource_node.tscn" id="1_k1868"]
+[ext_resource type="Texture2D" uid="uid://dbehqtvv1s207" path="res://Beta Sprites/Items/CopperBoulder.png" id="2_4awxj"]
+[ext_resource type="PackedScene" uid="uid://b5obeldvjct8k" path="res://Items/Materials/copper_drop.tscn" id="2_yqw5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2347"]
+size = Vector2(30, 28)
+
+[node name="CopperBoulder" unique_id=538276070 instance=ExtResource("1_k1868")]
+max_health = 160
+drop_table = Array[PackedScene]([ExtResource("2_yqw5i"), ExtResource("2_yqw5i"), ExtResource("2_yqw5i")])
+
+[node name="Sprite2D" parent="." index="0" unique_id=229680640]
+position = Vector2(10, -11)
+scale = Vector2(0.03448276, 0.033434626)
+texture = ExtResource("2_4awxj")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=784008576]
+position = Vector2(11, -11)
+shape = SubResource("RectangleShape2D_t2347")
