@@ -31,12 +31,17 @@ func _physics_process(_delta):
 func collect_item():
 	if item_data != null:
 		print("Sucked up: ", item_data.item_name)
-		# Future: Inventory.add_item(item_data)
+		
+		var material_id = item_data.item_name.to_lower().replace(" ", "_")
+		
+		# THE FIX: We are now passing the icon along with the ID and the amount!
+		Inventory.add_material(material_id, 1, item_data.item_icon) 
+		
 	else:
 		print("Sucked up an item with no data!")
 		
 	queue_free()
-
+	
 # --- SIGNALS ---
 func _on_magnet_zone_body_entered(body):
 	if body.name == "Player":

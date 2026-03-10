@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cs2giobskbgli"]
+
+[ext_resource type="Script" uid="uid://cji4hsgatrfx" path="res://UI/inventory_ui.gd" id="1_4hlgy"]
+
+[node name="InventoryUI" type="CanvasLayer" unique_id=1627453523]
+process_mode = 3
+script = ExtResource("1_4hlgy")
+
+[node name="Panel" type="Panel" parent="." unique_id=646859238]
+offset_left = 28.0
+offset_top = 23.0
+offset_right = 894.0
+offset_bottom = 389.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=1593699481]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 318.0
+offset_bottom = 349.0
+
+[node name="LootList" type="VBoxContainer" parent="Panel/ScrollContainer" unique_id=952437983]
+layout_mode = 2

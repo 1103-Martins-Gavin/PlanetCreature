@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dldxbkp21ogds"]
+
+[ext_resource type="Texture2D" uid="uid://8x06lpo15nve" path="res://icon.svg" id="1_puanb"]
+
+[node name="ItemRow" type="HBoxContainer" unique_id=1575184253]
+
+[node name="ItemIcon" type="TextureRect" parent="." unique_id=4886548]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_puanb")
+expand_mode = 1
+
+[node name="ItemName" type="Label" parent="." unique_id=1632473873]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Copper Ore"
+
+[node name="ItemQuantity" type="Label" parent="." unique_id=124813409]
+layout_mode = 2
+text = "x15"

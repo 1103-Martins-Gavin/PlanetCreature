@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://docoh43fgjqjx" path="res://World/Mechanics/transition_platform.tscn" id="5_s1wbq"]
 [ext_resource type="PackedScene" uid="uid://ikhbm541iilh" path="res://World/Mechanics/spawn_zone.tscn" id="6_1uay7"]
 [ext_resource type="PackedScene" uid="uid://d0uvwpihqcx53" path="res://World/Interactables/copper_boulder.tscn" id="6_h7fgy"]
+[ext_resource type="PackedScene" uid="uid://cs2giobskbgli" path="res://UI/inventory_ui.tscn" id="7_a4imr"]
 [ext_resource type="PackedScene" uid="uid://dpjkkwr3flt5h" path="res://Entities/Creatures/Friendly/hare.tscn" id="7_h7fgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq2g6"]
@@ -27,7 +28,7 @@ position = Vector2(1125, 370)
 shape = SubResource("RectangleShape2D_oq2g6")
 
 [node name="Player" parent="." unique_id=1006036994 instance=ExtResource("2_1uay7")]
-position = Vector2(635, 201)
+position = Vector2(336, 234)
 
 [node name="TransitionPlatform" parent="." unique_id=891411151 instance=ExtResource("5_s1wbq")]
 position = Vector2(879, 338)
@@ -69,6 +70,8 @@ position = Vector2(81, 354)
 
 [node name="CopperBoulder4" parent="." unique_id=779609243 instance=ExtResource("6_h7fgy")]
 position = Vector2(123, 348)
+
+[node name="InventoryUI" parent="." unique_id=1627453523 instance=ExtResource("7_a4imr")]
 
 [editable path="TransitionPlatform"]
 [editable path="SpawnZone"]
